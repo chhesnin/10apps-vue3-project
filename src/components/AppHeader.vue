@@ -14,6 +14,7 @@ export default {};
   // border: 1px solid #000
   width: 100%
   padding: 20px
+  box-sizing: border-box
   background: linear-gradient(180deg, rgba(#177089,0.7) 0% 60%, transparent 100%)
   color: #eee
   .logo

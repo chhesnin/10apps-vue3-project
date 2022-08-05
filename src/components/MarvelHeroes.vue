@@ -1,6 +1,7 @@
 <template lang='pug'>
 .marvel-heroes
-  h1 MARVEL Heroes {{ heroesCount }}
+  h1 MARVEL Heroes
+  h4 {{ heroesCount }}
   ul
     li(v-for="(hero, index) in heroes", v-bind:key="hero.name") 
       span {{ hero.name }}
@@ -26,7 +27,7 @@ export default {
   },
   computed: {
     heroesCount() {
-      return this.heroes.length + " heroes";
+      return this.heroes.length;
     },
   },
   methods: {
@@ -51,6 +52,7 @@ export default {
   flex-direction: column
   justify-content: center
   align-items: center
+  margin-top: 30px
   h1
     margin-top: 30px
   ul

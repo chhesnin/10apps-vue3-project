@@ -23,17 +23,20 @@
 //- *不用縮排
 .app
   AppHeader
-  MarvelHeroes
+  //- MarvelHeroes
+  AppCalendar
 </template>
 
 <script>
 // 註冊元素
 import AppHeader from "./components/AppHeader.vue";
-import MarvelHeroes from "./components/MarvelHeroes.vue";
+// import MarvelHeroes from "./components/MarvelHeroes.vue";
+import AppCalendar from "./components/AppCalendar.vue";
 export default {
   components: {
     AppHeader: AppHeader,
-    MarvelHeroes: MarvelHeroes,
+    // MarvelHeroes: MarvelHeroes,
+    AppCalendar: AppCalendar,
   },
 };
 </script>
