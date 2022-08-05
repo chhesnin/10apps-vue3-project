@@ -23,20 +23,17 @@
 //- *不用縮排
 .app
   AppHeader
-  //- MarvelHeroes
-  AppCalendar
+  transition(name="page", mode="out-in")
+    router-view
 </template>
 
 <script>
 // 註冊元素
 import AppHeader from "./components/AppHeader.vue";
-// import MarvelHeroes from "./components/MarvelHeroes.vue";
-import AppCalendar from "./components/AppCalendar.vue";
+
 export default {
   components: {
     AppHeader: AppHeader,
-    // MarvelHeroes: MarvelHeroes,
-    AppCalendar: AppCalendar,
   },
 };
 </script>
@@ -55,4 +52,8 @@ html,body
   // display: flex
   // justify-content: center
 .app
+.page-enter-active,.page-leave-active
+  transition: 0.5s
+.page-enter,.page-leave-to
+  opacity: 0
 </style>
