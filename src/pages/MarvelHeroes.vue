@@ -95,11 +95,4 @@ export default {
         outline: none
         border: 2px solid rgba(#177089,0.8)
         border-radius: 3px
-    .add
-      &:hover
-        background-color: rgba(#177089,0.8)
-        border: 2px solid #177089
-        border-radius: 3px
-        // background: linear-gradient(0deg,#41b883 0%, #41b883 50%, transparent 100%)
-        color: #fff
 </style>

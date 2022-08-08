@@ -1,6 +1,6 @@
 <template lang='pug'>
 .app-markdown
-  h1.title App Markdown
+  h1.title Markdown
   section
     article.left
       //- @input=""+:value=""
@@ -12,6 +12,33 @@
 import { marked } from "marked";
 import debounce from "../utilities/mixins/debounce";
 export default {
+  // *Lifecycle Hooks
+  // beforeCreate() {
+  //   console.log("before create");
+  // },
+  // created() {
+  //   console.log("created");
+  // },
+  // beforeMount() {
+  //   console.log("before mount");
+  // },
+  // mounted() {
+  //   console.log("mounted");
+  // },
+  // // *當path改變，先unmount原先的元件並mount新的元件
+  // beforeUnmount() {
+  //   console.log("before unmount");
+  // },
+  // unmounted() {
+  //   console.log("unmounted");
+  // },
+  // // *當元件內的資料更新時觸發
+  // beforeUpdate() {
+  //   console.log("before update");
+  // },
+  // updated() {
+  //   console.log("updated");
+  // },
   // *merge 在此定義的同名data、computed、methods會覆蓋mixins的內容
   mixins: [debounce],
   data() {

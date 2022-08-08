@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       pages: [
+        { title: "Slider", to: "/app-slider" },
         { title: "Markdown", to: "/app-markdown" },
         { title: "Calendar", to: "/app-calendar" },
         { title: "MarvelHeroes", to: "/marvel-heroes" },

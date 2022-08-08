@@ -122,9 +122,4 @@ export default {
           font-weight: 700
       .btn
         padding: 5px 30px
-        &:hover
-          background-color: rgba(#177089,0.8)
-          color: #eee
-          border: 2px solid rgba(#177089,0.8)
-          border-radius: 3px
 </style>

@@ -53,4 +53,15 @@ html,body
 .app
   h1
     font-size: 2em
+  button
+    &:hover
+      background-color: rgba(#177089,0.8)
+      color: #eee
+      border: 2px solid rgba(#177089,0.8)
+      border-radius: 3px
+  input
+    &:focus
+      outline: none
+      border: 2px solid rgba(#177089,0.8)
+      border-radius: 3px
 </style>
