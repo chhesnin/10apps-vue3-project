@@ -1,13 +1,13 @@
 <template lang='pug'>
 .marvel-heroes
-  h1 MARVEL Heroes
+  h1.title MARVEL Heroes
   h4 {{ heroesCount }}
   ul
     li(v-for="(hero, index) in heroes", v-bind:key="hero.name") 
       span {{ hero.name }}
       button.remove(@click="removeHero(index)") x
   form(@submit.prevent="addHero")
-    input(v-model="newHero", placeholder="Type Hero Name Here")
+    input.input(v-model="newHero", placeholder="Type Hero Name Here")
     button.add(type="submit") Add Hero
 </template>
 
@@ -35,8 +35,6 @@ export default {
       if (this.newHero !== "") {
         this.heroes.push({ name: this.newHero });
         this.newHero = "";
-      } else {
-        this.heroes.pop();
       }
     },
     removeHero(index) {
@@ -50,17 +48,18 @@ export default {
 .marvel-heroes
   display: flex
   flex-direction: column
-  justify-content: center
   align-items: center
   margin-top: 30px
-  h1
-    margin-top: 30px
+  .title
+    letter-spacing: 1px
+  h4
+    margin: 0px
   ul
     list-style: none
     padding-left: 0
     width: 300px
     li
-      border: 1px solid #000
+      border: 1px solid #aaa
       border-radius: 5px
       padding: 10px
       margin: 10px 0px
@@ -81,20 +80,26 @@ export default {
         display: flex
         justify-content: center
         align-items: center
+        transition: 0.3s
         &:hover
           background-color: #c43131
-          color: #eee
+          color: #fff
   form
     width: 300px
     display: flex
     justify-content: space-between
-    input,.add
+    .input,.add
       padding: 5px 10px
+    .input
+      &:focus
+        outline: none
+        border: 2px solid rgba(#177089,0.8)
+        border-radius: 3px
     .add
       &:hover
-        background-color: #41b883
+        background-color: rgba(#177089,0.8)
+        border: 2px solid #177089
+        border-radius: 3px
         // background: linear-gradient(0deg,#41b883 0%, #41b883 50%, transparent 100%)
         color: #fff
-        border: none
-        border-radius: 3px
 </style>

@@ -1,6 +1,6 @@
 <template lang='pug'>
 .app-calendar
-  h1 Calendar
+  h1.title Calendar
   .calendar
     section.sb
       .block.month {{ currentMonth }}
@@ -88,9 +88,10 @@ export default {
   flex-direction: column
   align-items: center
   margin-top: 30px
-  h1
+  .title
     text-align: center
     margin-bottom: 30px
+    letter-spacing: 1px
   .calendar
     display: flex
     flex-direction: column
@@ -107,14 +108,15 @@ export default {
         justify-content: space-between
       .block
         // border: 1px solid #000
-        +size(60px,50px)
+        +size(60px,40px)
         +flex
+        font-weight: 100
         &.month,&.year
-          +size(60px,10px)
+          +size(60px,30px)
           color: rgba(#177089,0.8)
           font-weight: 700
         &.day
-          font-weight: 500
+          font-weight: 600
         &.red
           color: #c43131
           font-weight: 700

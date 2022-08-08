@@ -23,8 +23,7 @@
 //- *不用縮排
 .app
   AppHeader
-  transition(name="page", mode="out-in")
-    router-view
+  router-view
 </template>
 
 <script>
@@ -52,8 +51,6 @@ html,body
   // display: flex
   // justify-content: center
 .app
-.page-enter-active,.page-leave-active
-  transition: 0.5s
-.page-enter,.page-leave-to
-  opacity: 0
+  h1
+    font-size: 2em
 </style>

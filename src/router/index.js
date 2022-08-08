@@ -3,10 +3,11 @@ import { createRouter, createWebHistory } from "vue-router"
 import MarvelHeroes from "@/pages/MarvelHeroes"
 import AppCalendar from "@/pages/AppCalendar"
 import AppHome from "@/pages/AppHome"
+import AppMarkdown from '@/pages/AppMarkdown'
 
 const routes = [
   {
-    path: "/home",
+    path: "/",
     component: AppHome
   },
   {
@@ -16,7 +17,11 @@ const routes = [
   {
     path: '/app-calendar',
     component: AppCalendar
-  }
+  },
+  {
+    path: '/app-markdown',
+    component: AppMarkdown
+  },
 ]
 
 const router = createRouter({

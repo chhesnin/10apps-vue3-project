@@ -1,12 +1,22 @@
 <template lang='pug'>
 nav.app-header 
-  router-link.link(to="/home") Home
-  router-link.link.right(to="/marvel-heroes") MarvelHeroes
-  router-link.link.right(to="/app-calendar") Calendar
+  router-link.link(to="/") Home
+  //- *v-for
+  router-link.link.right(v-for="page in pages", :to="page.to", :key="page.to") {{ page.title }}
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      pages: [
+        { title: "Markdown", to: "/app-markdown" },
+        { title: "Calendar", to: "/app-calendar" },
+        { title: "MarvelHeroes", to: "/marvel-heroes" },
+      ],
+    };
+  },
+};
 </script>
 
 <style lang='sass'>
@@ -26,4 +36,5 @@ export default {};
       // *2個element可用jc, 2個以上用float
       float: right
       margin: 0px 10px
+      font-size: 14px
 </style>
