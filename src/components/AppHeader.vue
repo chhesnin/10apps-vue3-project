@@ -8,14 +8,16 @@ nav.app-header
       :to="page.to",
       :key="page.to"
     ) {{ page.title }}
-    .login.link.right(@click="$emit('open-login-modal')") login
-    .logout.link.right(@click="logout") logout
+    .logout.link.right(v-if="isLoggedIn", @click="logout") logout
+    .login.link.right(v-else, @click="$emit('open-login-modal')") login
 </template>
 
 <script>
 import auth from "../utilities/firebase";
 import { signOut } from "firebase/auth";
 export default {
+  // type: Boolean有default值，所以不需required
+  props: { isLoggedIn: { type: Boolean, required: true } },
   data() {
     return {
       pages: [
@@ -65,7 +67,7 @@ export default {
       // float: right
       margin: 0px 10px
       font-size: 14px
-  .login
+  .login,.logout
     float: right
     cursor: pointer
 </style>

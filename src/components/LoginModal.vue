@@ -4,13 +4,18 @@
   form(@submit.prevent="submit")
     h1.title Login Modal
     label User:
-    input(v-model="form.user", placeholder="enter your email or username")
+    input(
+      v-model="form.user",
+      placeholder="enter your email or username",
+      ref="userRef"
+    )
     label Password:
     input(
       type="password",
       v-model="form.password",
       placeholder="enter your password"
     )
+    GoogleLogin(@close-login-modal-from-google="closeLoginModal")
     button.login(type="submit") 
       //- *運用span更換文字
       span(v-if="!isLoading") Login
@@ -20,7 +25,11 @@
 <script>
 import auth from "../utilities/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import GoogleLogin from "./Login/GoogleLogin.vue";
 export default {
+  components: {
+    GoogleLogin: GoogleLogin,
+  },
   data() {
     return {
       form: {
@@ -29,6 +38,9 @@ export default {
       },
       isLoading: false,
     };
+  },
+  mounted() {
+    this.$refs.userRef.focus();
   },
   methods: {
     submit() {
@@ -84,6 +96,8 @@ export default {
       box-sizing: border-box
     h1.title
       text-align: center
+      margin-bottom: 35px
+      letter-spacing: 1px
     label
       margin-bottom: 100px
     input
@@ -94,9 +108,6 @@ export default {
       padding: 5px 10px
     button.login
       width: 100%
-      margin: 15px 0px 30px 0px
+      margin: 15px 0px
       padding: 6px
-    h6
-      margin: 0
-      text-align: center
 </style>

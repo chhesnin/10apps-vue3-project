@@ -23,7 +23,7 @@
 //- *不用縮排
 .app
   //- 只有$emit的component可以listen
-  AppHeader(@open-login-modal="isLoginOpen = true")
+  AppHeader(@open-login-modal="isLoginOpen = true", :isLoggedIn="isLoggedIn")
   router-view
   LoginModal(v-if="isLoginOpen", @close-login-modal="isLoginOpen = false")
 </template>
@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      isLoginOpen: true,
+      isLoginOpen: false,
       isLoggedIn: false,
       authUser: {},
     };

@@ -4,7 +4,7 @@
   section
     article.left
       //- @input=""+:value=""
-      textarea(:value="text", @input="update")
+      textarea(:value="text", @input="update", ref="markdownTextArea")
     article.right(v-html="getMdText")
 </template>
 
@@ -45,6 +45,9 @@ export default {
     return {
       text: "",
     };
+  },
+  mounted() {
+    this.$refs.markdownTextArea.focus();
   },
   computed: {
     getMdText() {

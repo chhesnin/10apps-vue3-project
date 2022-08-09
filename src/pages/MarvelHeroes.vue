@@ -7,7 +7,11 @@
       span {{ hero.name }}
       button.remove(@click="removeHero(index)") x
   form(@submit.prevent="addHero")
-    input.input(v-model="newHero", placeholder="Type Hero Name Here")
+    input.input(
+      v-model="newHero",
+      placeholder="Type Hero Name Here",
+      ref="newHeroRef"
+    )
     button.add(type="submit") Add Hero
 </template>
 
@@ -24,6 +28,10 @@ export default {
         { name: "Doctor Strange" },
       ],
     };
+  },
+  mounted() {
+    // 同document.getElementById("")
+    this.$refs.newHeroRef.focus();
   },
   computed: {
     heroesCount() {
