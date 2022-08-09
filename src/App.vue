@@ -22,17 +22,26 @@
 <template lang="pug">
 //- *不用縮排
 .app
-  AppHeader
+  //- 只有$emit的component可以listen
+  AppHeader(@open-login-modal="isLoginOpen = true")
   router-view
+  LoginModal(v-if="isLoginOpen", @close-login-modal="isLoginOpen = false")
 </template>
 
 <script>
 // 註冊元素
 import AppHeader from "./components/AppHeader.vue";
+import LoginModal from "./components/LoginModal.vue";
 
 export default {
   components: {
     AppHeader: AppHeader,
+    LoginModal: LoginModal,
+  },
+  data() {
+    return {
+      isLoginOpen: true,
+    };
   },
 };
 </script>
@@ -54,12 +63,16 @@ html,body
   h1
     font-size: 2em
   button
+    padding: 5px 10px
+    cursor: pointer
     &:hover
       background-color: rgba(#177089,0.8)
       color: #eee
       border: 2px solid rgba(#177089,0.8)
       border-radius: 3px
   input
+    font-size: 16px
+    padding: 5px 10px
     &:focus
       outline: none
       border: 2px solid rgba(#177089,0.8)

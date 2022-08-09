@@ -88,11 +88,4 @@ export default {
     width: 300px
     display: flex
     justify-content: space-between
-    .input,.add
-      padding: 5px 10px
-    .input
-      &:focus
-        outline: none
-        border: 2px solid rgba(#177089,0.8)
-        border-radius: 3px
 </style>
