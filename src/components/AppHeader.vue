@@ -9,9 +9,12 @@ nav.app-header
       :key="page.to"
     ) {{ page.title }}
     .login.link.right(@click="$emit('open-login-modal')") login
+    .logout.link.right(@click="logout") logout
 </template>
 
 <script>
+import auth from "../utilities/firebase";
+import { signOut } from "firebase/auth";
 export default {
   data() {
     return {
@@ -22,6 +25,17 @@ export default {
         { title: "Slider", to: "/app-slider" },
       ],
     };
+  },
+  methods: {
+    logout() {
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
@@ -37,6 +51,8 @@ export default {
   display: flex
   justify-content: space-between
   .apps
+    // *df可協助對齊
+    display: flex
   .link
     margin-left: 20px
     // *移除a的預設樣式
@@ -51,4 +67,5 @@ export default {
       font-size: 14px
   .login
     float: right
+    cursor: pointer
 </style>

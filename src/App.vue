@@ -32,6 +32,8 @@
 // 註冊元素
 import AppHeader from "./components/AppHeader.vue";
 import LoginModal from "./components/LoginModal.vue";
+import auth from "./utilities/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 export default {
   components: {
@@ -41,7 +43,21 @@ export default {
   data() {
     return {
       isLoginOpen: true,
+      isLoggedIn: false,
+      authUser: {},
     };
+  },
+  mounted() {
+    // listen auth登入狀態是否改變
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.isLoggedIn = true;
+        this.authUser = user;
+      } else {
+        this.isLoggedIn = false;
+        this.authUser = {};
+      }
+    });
   },
 };
 </script>

@@ -1,28 +1,55 @@
 <template lang="pug">
 .login-modal
-  section(@click="$emit('close-login-modal')")
+  section(@click="closeLoginModal")
   form(@submit.prevent="submit")
     h1.title Login Modal
-    label Account:
-    input(v-model="form.account", placeholder="Email or Username")
+    label User:
+    input(v-model="form.user", placeholder="enter your email or username")
     label Password:
-    input(type="password", v-model="form.password", placeholder="password")
-    button(type="submit") Login
+    input(
+      type="password",
+      v-model="form.password",
+      placeholder="enter your password"
+    )
+    button.login(type="submit") 
+      //- *運用span更換文字
+      span(v-if="!isLoading") Login
+      span(v-else="isLoading") Loading
 </template>
 
 <script>
+import auth from "../utilities/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 export default {
   data() {
     return {
       form: {
-        account: "",
-        password: "",
+        user: "tp6vup@hotmail.com",
+        password: "password",
       },
+      isLoading: false,
     };
   },
-  method: {
+  methods: {
     submit() {
-      // submit the form
+      // console.log("success submit");
+      this.isLoading = true;
+      signInWithEmailAndPassword(auth, this.form.user, this.form.password)
+        .then(() => {
+          // console.log(userCredential);
+          this.isLoading = false;
+          this.form.user = "";
+          this.form.password = "";
+          this.closeLoginModal();
+        })
+        .catch(() => {
+          // console.log(error);
+          this.isLoading = false;
+        });
+    },
+    closeLoginModal() {
+      // *this.$emit("")
+      this.$emit("close-login-modal");
     },
   },
 };
@@ -62,11 +89,14 @@ export default {
     input
       margin:
         top: 5px
-        bottom: 15px
+        bottom: 30px
       width: 100%
       padding: 5px 10px
-    button
+    button.login
       width: 100%
-      margin: 25px 0px 30px 0px
+      margin: 15px 0px 30px 0px
       padding: 6px
+    h6
+      margin: 0
+      text-align: center
 </style>
