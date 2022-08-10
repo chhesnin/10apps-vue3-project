@@ -16,38 +16,44 @@
 </template>
 
 <script>
+// setup(){} 不使用this
+// setup(){} 與舊架構相容
+// ref() make things reactive *ref().value *use const
+// Lifecycle Hooks 加on, 需import
+// computed 需import
+
+import { onMounted, ref, computed } from "vue";
 export default {
-  data() {
-    return {
-      newHero: "",
-      heroes: [
-        { name: "Iron Man" },
-        { name: "Captain America" },
-        { name: "Scarlet Witch" },
-        { name: "Spider-Man" },
-        { name: "Doctor Strange" },
-      ],
-    };
-  },
-  mounted() {
-    // 同document.getElementById("")
-    this.$refs.newHeroRef.focus();
-  },
-  computed: {
-    heroesCount() {
-      return this.heroes.length;
-    },
-  },
-  methods: {
-    addHero() {
-      if (this.newHero !== "") {
-        this.heroes.push({ name: this.newHero });
-        this.newHero = "";
+  setup() {
+    const newHeroRef = ref("");
+    const newHero = ref("");
+    const heroes = ref([
+      { name: "Iron Man" },
+      { name: "Captain America" },
+      { name: "Scarlet Witch" },
+      { name: "Spider-Man" },
+      { name: "Doctor Strange" },
+    ]);
+    // console.log(heroes);
+
+    onMounted(() => {
+      newHeroRef.value.focus();
+    });
+
+    const heroesCount = computed(() => heroes.value.length);
+
+    function addHero() {
+      if (newHero.value !== "") {
+        heroes.value.push({ name: newHero.value });
+        newHero.value = "";
       }
-    },
-    removeHero(index) {
-      this.heroes = this.heroes.filter((hero, hid) => hid != index);
-    },
+    }
+    function removeHero(index) {
+      heroes.value = heroes.value.filter((hero, hid) => hid != index);
+    }
+
+    // 記得return
+    return { heroes, newHero, removeHero, addHero, newHeroRef, heroesCount };
   },
 };
 </script>
