@@ -81,7 +81,6 @@ export default {
     z-index: 2
   form
     width: 330px
-    background-color: #fff
     position: absolute
     z-index: 3
     left: 50%

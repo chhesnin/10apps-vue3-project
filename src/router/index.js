@@ -6,6 +6,7 @@ import AppHome from "@/pages/AppHome"
 import AppMarkdown from "@/pages/AppMarkdown"
 import AppSlider from "@/pages/AppSlider"
 import AppCalculator from "@/pages/AppCalculator"
+import ReusableModal from "@/pages/ReusableModal"
 
 const routes = [
   {
@@ -31,6 +32,10 @@ const routes = [
   {
     path: "/app-calculator",
     component: AppCalculator
+  },
+  {
+    path: "/reusable-modal",
+    component: ReusableModal
   },
 ]
 

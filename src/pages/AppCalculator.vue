@@ -25,29 +25,26 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
+import useWindowEvent from "../utilities/composition/useWindowEvent";
 export default {
   setup() {
     const currentNum = ref("");
     // *Array.includes()
     const operations = ["+", "-", "*", "/"];
     // *typeof event.key == "string"
-    // *Array.includes()不允許強制轉型，改用Array.find()
+    // *Array.includes()不允許強制轉型, 改用Array.find()
     const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
     const prevNum = ref("");
     const selectedOperation = ref("");
 
     // *keydown event
-    // ***沒有
     function KeydownFn(evt) {
       pressed(evt.key);
+      console.log(evt.key);
     }
-    onMounted(() => {
-      window.addEventListener("keydown", KeydownFn);
-    });
-    onUnmounted(() => {
-      window.removeEventListener("keydown", KeydownFn);
-    });
+    // *在setup()中使用composition
+    useWindowEvent("keydown", KeydownFn);
 
     function pressed(value) {
       if (value === "=" || value === "Enter") calculate();

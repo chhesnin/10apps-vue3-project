@@ -89,7 +89,6 @@ export default {
   align-items: center
   margin-top: 30px
   .title
-    text-align: center
     margin-bottom: 30px
     letter-spacing: 1px
   .calendar
@@ -101,7 +100,7 @@ export default {
     section
       display: flex
       flex-direction: row
-      // *在上層容器設定fw: wrap，其更上層容器需有size限制
+      // *在上層容器設定fw: wrap, 其更上層容器需有size限制
       flex-wrap: wrap
       margin-bottom: 10px
       &.sb

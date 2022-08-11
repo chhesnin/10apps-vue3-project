@@ -10,8 +10,16 @@
 
 <script>
 import { marked } from "marked";
-import debounce from "../utilities/mixins/debounce";
+import useDebounce from "../utilities/composition/useDebounce";
+// import { ref } from "vue";
 export default {
+  // ***issue
+  // setup() {
+  //   const debounce = ref("");
+
+  //   const { debounceComposition } = useDebounce();
+  //   debounce.value = debounceComposition;
+  // },
   // *Lifecycle Hooks
   // beforeCreate() {
   //   console.log("before create");
@@ -25,7 +33,7 @@ export default {
   // mounted() {
   //   console.log("mounted");
   // },
-  // // *當path改變，先unmount原先的元件並mount新的元件
+  // // *當path改變, 先unmount原先的元件並mount新的元件
   // beforeUnmount() {
   //   console.log("before unmount");
   // },
@@ -40,13 +48,17 @@ export default {
   //   console.log("updated");
   // },
   // *merge 在此定義的同名data、computed、methods會覆蓋mixins的內容
-  mixins: [debounce],
   data() {
     return {
       text: "",
+      debounce: "",
     };
   },
   mounted() {
+    // *在methods中使用composition
+    // *加{}因為有return{}
+    const { debounce } = useDebounce();
+    this.debounce = debounce;
     this.$refs.markdownTextArea.focus();
   },
   computed: {

@@ -16,7 +16,7 @@ nav.app-header
 import auth from "../utilities/firebase";
 import { signOut } from "firebase/auth";
 export default {
-  // *type: Boolean有default值，所以不需required
+  // *type: Boolean有default值, 所以不需required
   props: { isLoggedIn: { type: Boolean, required: true } },
   data() {
     return {
@@ -26,6 +26,7 @@ export default {
         { title: "Markdown", to: "/app-markdown" },
         { title: "Slider", to: "/app-slider" },
         { title: "Calculator", to: "/app-calculator" },
+        { title: "ReModal", to: "/Reusable-modal" },
       ],
     };
   },
