@@ -3,7 +3,7 @@
   h1.title Markdown
   section
     article.left
-      //- @input=""+:value=""
+      //- *@input=""+:value=""
       textarea(:value="text", @input="update", ref="markdownTextArea")
     article.right(v-html="getMdText")
 </template>
@@ -73,7 +73,7 @@ export default {
   flex-direction: column
   margin-top: 30px
   // ***100vh 100%視窗高度
-  height: calc(100vh - 90px)
+  height: calc(100vh - 110px)
   *
     box-sizing: border-box
   .title

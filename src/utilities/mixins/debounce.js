@@ -1,4 +1,4 @@
-// 當方法會在不只一個component使用時, 寫mixin
+// *當方法會在不只一個component使用時, 寫mixin
 // *同Vue物件的架構
 export default {
   data() {

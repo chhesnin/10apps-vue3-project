@@ -5,6 +5,7 @@ import AppCalendar from "@/pages/AppCalendar"
 import AppHome from "@/pages/AppHome"
 import AppMarkdown from "@/pages/AppMarkdown"
 import AppSlider from "@/pages/AppSlider"
+import AppCalculator from "@/pages/AppCalculator"
 
 const routes = [
   {
@@ -27,10 +28,13 @@ const routes = [
     path: "/app-slider",
     component: AppSlider
   },
+  {
+    path: "/app-calculator",
+    component: AppCalculator
+  },
 ]
 
 const router = createRouter({
-  // *可以拿掉Hash
   history: createWebHistory(),
   routes,
 })

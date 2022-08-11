@@ -52,7 +52,7 @@ export default {
       heroes.value = heroes.value.filter((hero, hid) => hid != index);
     }
 
-    // 記得return
+    // *記得return
     return { heroes, newHero, removeHero, addHero, newHeroRef, heroesCount };
   },
 };
@@ -77,7 +77,7 @@ export default {
       border-radius: 5px
       padding: 10px
       margin: 10px 0px
-      // 運用df與jc:space-between將容器內的元素左右擺
+      // *運用df與jc:space-between將容器內的元素左右擺
       display: flex
       justify-content: space-between
       transition: 0.5s
@@ -85,7 +85,7 @@ export default {
         background-color: #eee
         transform: translateY(-3px)
       .remove
-        // // float在上層容器的左右邊
+        // *float在上層容器的左右邊
         // float: right
         width: 20px
         height: 20px

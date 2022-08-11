@@ -53,7 +53,7 @@ export default {
 .app-slider
   display: flex
   flex-direction: column
-  height: calc(100vh - 60px)
+  height: calc(100vh - 80px)
   position: relative
   overflow: hidden
   .img

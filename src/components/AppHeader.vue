@@ -16,7 +16,7 @@ nav.app-header
 import auth from "../utilities/firebase";
 import { signOut } from "firebase/auth";
 export default {
-  // type: Boolean有default值，所以不需required
+  // *type: Boolean有default值，所以不需required
   props: { isLoggedIn: { type: Boolean, required: true } },
   data() {
     return {
@@ -25,6 +25,7 @@ export default {
         { title: "Calendar", to: "/app-calendar" },
         { title: "Markdown", to: "/app-markdown" },
         { title: "Slider", to: "/app-slider" },
+        { title: "Calculator", to: "/app-calculator" },
       ],
     };
   },
@@ -46,7 +47,7 @@ export default {
 .app-header
   // border: 1px solid #000
   width: 100%
-  padding: 20px
+  padding: 30px
   box-sizing: border-box
   background: linear-gradient(180deg, rgba(#177089,0.7) 0% 60%, transparent 100%)
   color: #eee

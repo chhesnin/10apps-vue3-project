@@ -11,7 +11,7 @@
     section
       //- ***加在前面不{{}}就好了！！！
       .block(v-for="num in startDay()")
-      //- :class="{class名: method亦可直接給運算式}"
+      //- *:class="{class名: method亦可直接給運算式}"
       .block(
         v-for="num in daysInMonth()",
         :class="{ red: isCurrentDate(num) }",
