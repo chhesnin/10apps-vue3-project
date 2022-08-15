@@ -17,7 +17,7 @@ import { auth } from "../utilities/firebase";
 import { signOut } from "firebase/auth";
 export default {
   // *type: Boolean有default值, 所以不需required
-  props: { isLoggedIn: { type: Boolean, required: true } },
+  // props: { isLoggedIn: { type: Boolean, required: true } },
   data() {
     return {
       pages: [
@@ -30,6 +30,11 @@ export default {
         { title: "Chat", to: "/realtime-chat" },
       ],
     };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn;
+    },
   },
   methods: {
     logout() {

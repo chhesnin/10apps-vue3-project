@@ -6,7 +6,8 @@
       .message(
         v-for="chat in state.chats",
         :key="chat.message",
-        :class="{ right: chat.userId == state.userId }"
+        :class="{ right: chat.userId == userId }",
+        v-if="userId"
       ) {{ chat.message }}
 
     input(
@@ -30,7 +31,9 @@ import {
   push,
   onChildAdded,
 } from "firebase/database";
-import { auth, chatsRef } from "../utilities/firebase";
+import { chatsRef } from "../utilities/firebase";
+import { computed } from "vue";
+import { useStore } from "vuex";
 export default {
   setup() {
     // *ref()
@@ -39,8 +42,12 @@ export default {
     const state = reactive({
       chats: [],
       message: "",
-      userId: null,
     });
+
+    const store = useStore();
+    // *使用vuex+computed處理promise
+    const userId = computed(() => store.state.authUser.uid);
+
     onMounted(() => {
       // *Read data once with get()
       // *get()與onValue()不能並用
@@ -57,7 +64,6 @@ export default {
 
       onChildAdded(chatsRef, (data) => {
         // ***issue
-        state.userId = auth.currentUser.uid;
         state.chats.push({ key: data.key, ...data.val() });
         console.log(state.chats);
       });
@@ -75,7 +81,7 @@ export default {
     }
 
     // return { chats };
-    return { state, addMessage };
+    return { state, addMessage, userId };
   },
 };
 </script>

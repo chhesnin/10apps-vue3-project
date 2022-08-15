@@ -23,7 +23,7 @@
 //- *不用縮排
 .app
   //- *只有$emit的component可以listen
-  AppHeader(@open-login-modal="isLoginOpen = true", :isLoggedIn="isLoggedIn")
+  AppHeader(@open-login-modal="isLoginOpen = true")
   router-view
   //- *可以teleport元素或元件to any where, 解決在component中的component產生的問題
   //- teleport(to="body")
@@ -36,8 +36,24 @@ import AppHeader from "./components/AppHeader.vue";
 import LoginModal from "./components/LoginModal.vue";
 import { auth } from "./utilities/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { useStore } from "vuex";
+import { onMounted } from "vue";
 
 export default {
+  setup() {
+    onMounted(() => {
+      const store = useStore();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          store.commit("setLoggedState", true);
+          store.commit("setAuthUser", user);
+        } else {
+          store.commit("setLoggedState", false);
+          store.commit("setAuthUser", {});
+        }
+      });
+    });
+  },
   components: {
     AppHeader: AppHeader,
     LoginModal: LoginModal,
@@ -45,23 +61,20 @@ export default {
   data() {
     return {
       isLoginOpen: false,
-      isLoggedIn: false,
-      authUser: {},
     };
   },
-  mounted() {
-    // const auth = getAuth(app);
-    // *listen auth登入狀態是否改變
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.isLoggedIn = true;
-        this.authUser = user;
-      } else {
-        this.isLoggedIn = false;
-        this.authUser = {};
-      }
-    });
-  },
+  // mounted() {
+  //   // *listen auth登入狀態是否改變
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       this.$store.commit("setLoggedState", true);
+  //       this.$store.commit("setAuthUser", user);
+  //     } else {
+  //       this.$store.commit("setLoggedState", false);
+  //       this.$store.commit("setAuthUser", {});
+  //     }
+  //   });
+  // },
 };
 </script>
 
