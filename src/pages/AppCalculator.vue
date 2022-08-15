@@ -144,12 +144,12 @@ export default {
           background-color: rgba(#177089,0.2)
           color: black
           font-weight: 700
-          border: 2px solid rgba(#177089,0.4)
-          border-radius: 3px
+          border: 1.5px solid rgba(#177089,0.4)
+          border-radius: 5px
           box-shadow: none
       &.equal
         &:hover
           background-color: rgba(#c43131,0.5)
-          border: 2px solid rgba(#c43131,0.8)
+          border: 1.5px solid rgba(#c43131,0.8)
           box-shadow: none
 </style>

@@ -55,7 +55,6 @@ export default {
   flex-direction: column
   height: calc(100vh - 80px)
   position: relative
-  overflow: hidden
   .img
     +imgCss
   section

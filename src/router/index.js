@@ -7,6 +7,7 @@ import AppMarkdown from "@/pages/AppMarkdown"
 import AppSlider from "@/pages/AppSlider"
 import AppCalculator from "@/pages/AppCalculator"
 import ReusableModal from "@/pages/ReusableModal"
+import RealtimeChat from "@/pages/RealtimeChat"
 
 const routes = [
   {
@@ -36,6 +37,10 @@ const routes = [
   {
     path: "/reusable-modal",
     component: ReusableModal
+  },
+  {
+    path: "/realtime-chat",
+    component: RealtimeChat
   },
 ]
 

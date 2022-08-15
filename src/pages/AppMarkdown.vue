@@ -103,7 +103,7 @@ export default {
         right: 10px
       &.right
         border: 2px solid #ddd
-        border-radius: 3px
+        border-radius: 5px
         background-color: #eee
         padding: 10px
         flex-wrap: wrap
@@ -113,8 +113,9 @@ export default {
         +size(100%)
         font-size: 16px
         padding: 10px
+        border-radius: 5px
         &:focus
           outline: none
           border: 2px solid rgba(#177089,0.8)
-          border-radius: 3px
+          border-radius: 5px
 </style>

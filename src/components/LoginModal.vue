@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import auth from "../utilities/firebase";
+import { auth } from "../utilities/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import GoogleLogin from "./Login/GoogleLogin.vue";
 export default {
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       form: {
-        user: "tp6vup@hotmail.com",
+        user: "user2@gmail.com",
         password: "password",
       },
       isLoading: false,

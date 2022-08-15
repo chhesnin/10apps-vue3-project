@@ -13,7 +13,7 @@ nav.app-header
 </template>
 
 <script>
-import auth from "../utilities/firebase";
+import { auth } from "../utilities/firebase";
 import { signOut } from "firebase/auth";
 export default {
   // *type: Boolean有default值, 所以不需required
@@ -26,7 +26,8 @@ export default {
         { title: "Markdown", to: "/app-markdown" },
         { title: "Slider", to: "/app-slider" },
         { title: "Calculator", to: "/app-calculator" },
-        { title: "ReModal", to: "/Reusable-modal" },
+        { title: "ReModal", to: "/reusable-modal" },
+        { title: "Chat", to: "/realtime-chat" },
       ],
     };
   },

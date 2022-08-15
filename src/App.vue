@@ -34,7 +34,7 @@
 // *註冊元素
 import AppHeader from "./components/AppHeader.vue";
 import LoginModal from "./components/LoginModal.vue";
-import auth from "./utilities/firebase";
+import { auth } from "./utilities/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
 export default {
@@ -50,6 +50,7 @@ export default {
     };
   },
   mounted() {
+    // const auth = getAuth(app);
     // *listen auth登入狀態是否改變
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -77,6 +78,7 @@ html,body
   // *下層只有一個元素的置中
   // *display: flex
   // *justify-content: center
+  overflow: hidden
 .app
   *
     color: #222
@@ -85,16 +87,22 @@ html,body
   button
     padding: 5px 10px
     cursor: pointer
+    border: 1.5px solid #aaa
+    border-radius: 5px
+    transition: 0.1s
     &:hover
       background-color: rgba(#177089,0.8)
       color: #eee
-      border: 2px solid rgba(#177089,0.8)
-      border-radius: 3px
+      border: 1.5px solid rgba(#177089,0.8)
+      border-radius: 5px
   input
     font-size: 16px
     padding: 5px 10px
+    border: 1.5px solid #aaa
+    border-radius: 5px
+    transition: 0.1s
     &:focus
       outline: none
-      border: 2px solid rgba(#177089,0.8)
-      border-radius: 3px
+      border: 1.5px solid rgba(#177089,0.8)
+      border-radius: 5px
 </style>

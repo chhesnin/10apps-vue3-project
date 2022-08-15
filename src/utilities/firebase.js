@@ -1,17 +1,25 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getDatabase,ref } from "firebase/database";
+
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD9NAr9sQXp2dCWrEU8ncsbvF2heexl4c0",
-  authDomain: "vue-course-d5bf0.firebaseapp.com",
-  projectId: "vue-course-d5bf0",
-  storageBucket: "vue-course-d5bf0.appspot.com",
-  messagingSenderId: "50599250199",
-  appId: "1:50599250199:web:cf66172feecedb99be0f52"
+  apiKey: "AIzaSyDP0ytp_Ux4MDgGfpiFZrANkHgQyVADm2Y",
+  authDomain: "vue-course-64d51.firebaseapp.com",
+  databaseURL: "https://vue-course-64d51-default-rtdb.firebaseio.com",
+  projectId: "vue-course-64d51",
+  storageBucket: "vue-course-64d51.appspot.com",
+  messagingSenderId: "354389688291",
+  appId: "1:354389688291:web:3e9a6371e184abb2f8ead6"
 };
 
 const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+// ***
+export const auth = getAuth(app);
 
-export default auth;
+const db = getDatabase(app);
+// const dbRef = ref(db);
+export const chatsRef = ref(db, "chats");
+
+export default app;
