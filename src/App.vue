@@ -23,11 +23,11 @@
 //- *不用縮排
 .app
   //- *只有$emit的component可以listen
-  AppHeader(@open-login-modal="isLoginOpen = true")
+  AppHeader
   router-view
   //- *可以teleport元素或元件to any where, 解決在component中的component產生的問題
   //- teleport(to="body")
-  LoginModal(v-if="isLoginOpen", @close-login-modal="isLoginOpen = false")
+  LoginModal(v-if="$store.state.isLoginOpen")
 </template>
 
 <script>
@@ -41,8 +41,8 @@ import { onMounted } from "vue";
 
 export default {
   setup() {
+    const store = useStore();
     onMounted(() => {
-      const store = useStore();
       onAuthStateChanged(auth, (user) => {
         if (user) {
           store.commit("setLoggedState", true);
@@ -57,11 +57,6 @@ export default {
   components: {
     AppHeader: AppHeader,
     LoginModal: LoginModal,
-  },
-  data() {
-    return {
-      isLoginOpen: false,
-    };
   },
   // mounted() {
   //   // *listen auth登入狀態是否改變

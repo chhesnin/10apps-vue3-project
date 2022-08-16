@@ -1,22 +1,26 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 
 // Create a new store instance.
 const store = createStore({
-  state () {
+  state() {
     return {
       isLoggedIn: false,
       authUser: {},
-    }
+      isLoginOpen: false,
+    };
   },
   mutations: {
     // payload接入參數
-    setLoggedState(state,payload) {
+    setLoggedState(state, payload) {
       state.isLoggedIn = payload;
     },
-    setAuthUser(state,payload) {
+    setAuthUser(state, payload) {
       state.authUser = payload;
     },
-  }
-})
+    setLoginModal(state, payload) {
+      state.isLoginOpen = payload;
+    },
+  },
+});
 
 export default store;

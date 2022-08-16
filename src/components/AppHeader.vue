@@ -9,12 +9,13 @@ nav.app-header
       :key="page.to"
     ) {{ page.title }}
     .logout.link.right(v-if="isLoggedIn", @click="logout") logout
-    .login.link.right(v-else, @click="$emit('open-login-modal')") login
+    .login.link.right(v-else, @click="openLoginModal") login
 </template>
 
 <script>
 import { auth } from "../utilities/firebase";
 import { signOut } from "firebase/auth";
+import store from "../store";
 export default {
   // *type: Boolean有default值, 所以不需required
   // props: { isLoggedIn: { type: Boolean, required: true } },
@@ -33,7 +34,10 @@ export default {
   },
   computed: {
     isLoggedIn() {
-      return this.$store.state.isLoggedIn;
+      return store.state.isLoggedIn;
+    },
+    isLoginOpen() {
+      return store.state.isLoginOpen;
     },
   },
   methods: {
@@ -45,6 +49,9 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    openLoginModal() {
+      store.commit("setLoginModal", true);
     },
   },
 };

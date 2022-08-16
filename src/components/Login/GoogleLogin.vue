@@ -6,6 +6,7 @@
 <script>
 import { auth } from "@/utilities/firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import store from "@/store";
 export default {
   methods: {
     loginWithGoogle() {
@@ -13,7 +14,7 @@ export default {
 
       signInWithPopup(auth, provider)
         .then(() => {
-          this.$emit("close-login-modal-from-google");
+          store.commit("setLoginModal", false);
         })
         .catch(() => {});
     },

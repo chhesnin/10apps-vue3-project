@@ -113,8 +113,7 @@ export default {
       height: 100%
       .message
         // border: 1.5px solid #000
-        padding: 3px 15px
-        margin: 3px
+        padding: 3px 0px
         // border-radius: 20px
         // background-color: rgba(#177089,0.8)
         color: rgba(#177089,0.8)

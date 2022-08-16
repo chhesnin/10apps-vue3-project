@@ -15,7 +15,7 @@
       v-model="form.password",
       placeholder="enter your password"
     )
-    GoogleLogin(@close-login-modal-from-google="closeLoginModal")
+    GoogleLogin
     button.login(type="submit") 
       //- *運用span更換文字
       span(v-if="!isLoading") Login
@@ -26,6 +26,7 @@
 import { auth } from "../utilities/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import GoogleLogin from "./Login/GoogleLogin.vue";
+import store from "../store";
 export default {
   components: {
     GoogleLogin: GoogleLogin,
@@ -61,7 +62,7 @@ export default {
     },
     closeLoginModal() {
       // *this.$emit("")
-      this.$emit("close-login-modal");
+      store.commit("setLoginModal", false);
     },
   },
 };
