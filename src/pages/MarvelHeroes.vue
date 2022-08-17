@@ -87,6 +87,7 @@ export default {
       .remove
         // *float在上層容器的左右邊
         // float: right
+        padding: 0
         width: 20px
         height: 20px
         border: 1px solid #ddd

@@ -8,6 +8,7 @@ import AppSlider from "@/pages/AppSlider";
 import AppCalculator from "@/pages/AppCalculator";
 import ReusableModal from "@/pages/ReusableModal";
 import RealtimeChat from "@/pages/RealtimeChat";
+import UserCrud from "@/pages/UserCrud";
 import store from "@/store";
 
 const routes = [
@@ -51,6 +52,10 @@ const routes = [
     //     next();
     //   }
     // }
+  },
+  {
+    path: "/user-crud",
+    component: UserCrud,
   },
 ];
 

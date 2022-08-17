@@ -29,6 +29,7 @@ export default {
         { title: "Calculator", to: "/app-calculator" },
         { title: "ReModal", to: "/reusable-modal" },
         { title: "Chat", to: "/realtime-chat" },
+        { title: "UserCrud", to: "/user-crud" },
       ],
     };
   },

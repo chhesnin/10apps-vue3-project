@@ -86,12 +86,15 @@ html,body
   // *下層只有一個元素的置中
   // *display: flex
   // *justify-content: center
-  overflow: hidden
+  // overflow: hidden
+
 .app
   *
     color: #222
   h1
     font-size: 2em
+  h2
+    text-align: center
   button
     padding: 5px 10px
     cursor: pointer

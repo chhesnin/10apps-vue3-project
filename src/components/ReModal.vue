@@ -14,12 +14,12 @@
 
 <script>
 export default {
-  // ***setup(), props留空, 引入emit
+  // *setup(), props留空, 引入emit
+  // *不能直接用click, 因需判斷只有點擊section才會觸發
   setup(_, { emit }) {
     function closeModal() {
       emit("close-modal");
     }
-
     return { closeModal };
   },
 };
@@ -50,4 +50,39 @@ export default {
     box-sizing: border-box
     *
       box-sizing: border-box
+    h2
+      text-align: center
+    form
+      display: flex
+      flex-direction: column
+      // *#app的設定
+      button
+        padding: 5px 10px
+        cursor: pointer
+        border: 1.5px solid #aaa
+        border-radius: 5px
+        transition: 0.1s
+        &:hover
+          background-color: rgba(#177089,0.8)
+          color: #eee
+          border: 1.5px solid rgba(#177089,0.8)
+          border-radius: 5px
+      input
+        font-size: 16px
+        padding: 5px 10px
+        border: 1.5px solid #aaa
+        border-radius: 5px
+        transition: 0.1s
+        &:focus
+          outline: none
+          border: 1.5px solid rgba(#177089,0.8)
+          border-radius: 5px
+      // *此component設定
+      label,input
+        width: 100%
+        margin: 5px 0px
+        box-sizing: border-box
+      button
+        margin: 20px 0px
+        padding: 6px
 </style>
