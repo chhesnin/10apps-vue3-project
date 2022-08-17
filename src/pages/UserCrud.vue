@@ -3,7 +3,7 @@
   h1.title User Crud
   section
     .post
-      button.post(@click="state.isPostModalOpen = true") Post
+      PostUser(@new-user-pushed="newUserPushed")
     table
       thead
         tr.head(style="color: #fff")
@@ -40,32 +40,7 @@
         :class="{ disabled: state.users.page == state.users.total_pages }",
         @click="nextPage"
       ) Next
-  //- *Post Modal
-  teleport(to="#app")
-    //- *components的CSS在components設定
-    ReModal(
-      v-if="state.isPostModalOpen",
-      @close-modal="state.isPostModalOpen = false"
-    )
-      template(#title) 
-        h2 Add New User
-      template(#body)
-        form(@submit.prevent="post")
-          label Name:
-          input(v-model="state.form.name", placeholder="User Name")
-          label Email:
-          input(
-            v-model="state.form.email",
-            placeholder="User Email",
-            type="email"
-          )
-          label Avatar:
-          input(
-            v-model="state.form.avatar",
-            placeholder="Avatar Url",
-            type="text"
-          )
-          button(type="submit") Create
+
   //- *Put Modal
   teleport(to="#app")
     ReModal(
@@ -104,16 +79,12 @@ import { onMounted, reactive } from "vue";
 import axios from "../plugins/axios";
 // *需要.vue
 import ReModal from "../components/ReModal.vue";
+import PostUser from "../components/UserCrud/PostUser.vue";
 export default {
-  components: {
-    ReModal: ReModal,
-  },
+  components: { ReModal, PostUser },
   setup() {
-    // *ref與reactive可以共用
-    // const isPostModalOpen = ref(false);
     const state = reactive({
       users: [],
-      isPostModalOpen: false,
       isPutModalOpen: false,
       updateUserId: "",
       form: {
@@ -136,16 +107,6 @@ export default {
       axios.get(`/users?page=2`).then((response) => {
         state.users = response.data;
       });
-    }
-    function post() {
-      axios.post("/users", state.form).then((response) => {
-        // *即時呈現
-        state.users.push(response.data);
-      });
-      state.isPostModalOpen = false;
-      state.form.name = "";
-      state.form.email = "";
-      state.form.avatar = "";
     }
     function getName(user, index) {
       return user.name.split(" ")[index];
@@ -170,16 +131,19 @@ export default {
       state.form.email = "";
       state.form.avatar = "";
     }
+    function newUserPushed(data) {
+      state.users.push(data);
+    }
 
     return {
       state,
       prevPage,
       nextPage,
-      post,
       getName,
       destroy,
       getPutModalOpen,
       put,
+      newUserPushed,
     };
   },
 };
@@ -208,9 +172,10 @@ export default {
     .post
       display: flex
       justify-content: end
-      margin-bottom: 10px
-    button.post
-      padding: 5px 30px
+      margin-bottom: 5px
+      // *components若是一般tag/class/id, CSS可在使用處設定
+      button.post
+        padding: 5px 30px
     table
       border-radius: 5px
       background-color: #eee
