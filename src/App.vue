@@ -86,8 +86,7 @@ html,body
   // *下層只有一個元素的置中
   // *display: flex
   // *justify-content: center
-  // overflow: hidden
-
+  overflow-x: hidden
 .app
   *
     color: #222

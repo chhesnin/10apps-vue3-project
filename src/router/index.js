@@ -9,6 +9,7 @@ import AppCalculator from "@/pages/AppCalculator";
 import ReusableModal from "@/pages/ReusableModal";
 import RealtimeChat from "@/pages/RealtimeChat";
 import UserCrud from "@/pages/UserCrud";
+import ObjectDetection from "@/pages/ObjectDetection";
 import store from "@/store";
 
 const routes = [
@@ -56,6 +57,10 @@ const routes = [
   {
     path: "/user-crud",
     component: UserCrud,
+  },
+  {
+    path: "/object-detection",
+    component: ObjectDetection,
   },
 ];
 

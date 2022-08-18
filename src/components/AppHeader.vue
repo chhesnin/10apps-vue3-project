@@ -30,6 +30,7 @@ export default {
         { title: "ReModal", to: "/reusable-modal" },
         { title: "Chat", to: "/realtime-chat" },
         { title: "UserCrud", to: "/user-crud" },
+        { title: "ObjectDetection", to: "/object-detection" },
       ],
     };
   },
