@@ -19,53 +19,45 @@
 
 <script>
 // *名稱重複可用 ref as databaseRef 更換名稱
-// *使用reactive代替
-// *only one data use ref, {more than one data} use reactive
+// *使用 reactive 代替
+// *only one data use ref, { more than one data } use reactive
 import { onMounted, reactive } from "vue";
-import {
-  // getDatabase,
-  // ref,
-  // get,
-  // child,
-  set,
-  push,
-  onChildAdded,
-} from "firebase/database";
-import { chatsRef } from "../utilities/firebase";
+import { set, push, onChildAdded } from "firebase/database";
+import { chatsRef } from "../plugins/firebase";
 import { computed } from "vue";
 import { useStore } from "vuex";
 export default {
   setup() {
-    // *ref()
     // const chats = ref([]);
-    // *reactive({})
+    // const state = reactive({})
     const state = reactive({
       chats: [],
       message: "",
     });
 
     const store = useStore();
-    // *使用vuex+computed處理promise
+    // ***使用 vuex + computed 處理 promise
     const userId = computed(() => store.state.authUser.uid);
 
     onMounted(() => {
       // *Read data once with get()
-      // *get()與onValue()不能並用
+      // *get() 與 onValue() 不能並用
       // get(child(dbRef, "chats")).then((snapshot) => {
       //   state.chats = snapshot.val();
       //   // console.log(state.chats);
       // });
 
-      // *onValue()與push()+set()併用會產生 newChildren.insert TypeError
+      // *Listen for value events with onValue()
+      // *onValue() 與 push() + set() 併用會產生 newChildren.insert TypeError
       // onValue(chatsRef, (snapshot) => {
       //   state.chats = snapshot.val();
       //   // console.log(state.chats);
       // });
 
+      // *Work with Lists of Data
       onChildAdded(chatsRef, (data) => {
-        // ***issue
         state.chats.push({ key: data.key, ...data.val() });
-        console.log(state.chats);
+        // console.log(data.key, data.val());
       });
     });
 
@@ -73,15 +65,15 @@ export default {
       const newChatsRef = push(chatsRef);
 
       set(newChatsRef, {
-        userId: state.userId,
+        // ***
+        userId: store.state.authUser.uid,
         message: state.message,
       });
 
       state.message = "";
     }
 
-    // return { chats };
-    return { state, addMessage, userId };
+    return { state, userId, addMessage };
   },
 };
 </script>

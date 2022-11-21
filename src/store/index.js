@@ -10,7 +10,7 @@ const store = createStore({
     };
   },
   mutations: {
-    // payload接入參數
+    // *payload 接入參數
     setLoggedState(state, payload) {
       state.isLoggedIn = payload;
     },

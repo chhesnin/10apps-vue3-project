@@ -3,10 +3,10 @@
   section(@click="closeModal")
   .modal
     //- div Normal Way.
-    //- *在此元件的使用處定義child
-    //- *在此元件的使用處無內容(//也不可有), 則使用slot下層的定義
-    //- *使用v-slot與template讓components reusable
-    h4
+    //- *在此元件的使用處，定義 child
+    //- *在此元件的使用處，無定義任何內容(//也不可有), 則使用元件定義處 slot 下層的內容
+    //- *使用 v-slot 與 template 讓 components reusable
+    h2
       slot(name="title")
     main
       slot(name="body")
@@ -14,8 +14,8 @@
 
 <script>
 export default {
-  // *setup(), props留空, 引入emit
-  // *不能直接用click, 因需判斷只有點擊section才會觸發
+  // *setup(){}, props 留空, 引入 emit
+  // *不能直接用 click, 因需判斷只有點擊 section 才會觸發
   setup(_, { emit }) {
     function closeModal() {
       emit("close-modal");
@@ -55,7 +55,7 @@ export default {
     form
       display: flex
       flex-direction: column
-      // *#app的設定
+      // *App.vue 的設定
       button
         padding: 5px 10px
         cursor: pointer
@@ -77,7 +77,7 @@ export default {
           outline: none
           border: 1.5px solid rgba(#177089,0.8)
           border-radius: 5px
-      // *此component設定
+      // *此 component 設定
       label,input
         width: 100%
         margin: 5px 0px

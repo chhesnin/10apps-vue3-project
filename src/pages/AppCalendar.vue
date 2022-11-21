@@ -2,23 +2,24 @@
 .app-calendar
   h1.title Calendar
   .calendar
-    section.sb
+    section.space-between
       .block.month {{ currentMonth }}
       .block.year {{ currentYear }}
     section
       .block.day(v-for="(day, index) in days", :key="day") 
         p {{ day }}
     section
-      //- ***加在前面不{{}}就好了！！！
+      //- ***加沒有內容之 .block 在前面，將1號推到正確的星期！
+      //- *v-for="num in 10" num 從1起算
       .block(v-for="num in startDay()")
-      //- *:class="{class名: method亦可直接給運算式}"
+      //- *:class="{class名: if判斷式(method||Boolean||運算式)}"
       .block(
         v-for="num in daysInMonth()",
         :class="{ red: isCurrentDate(num) }",
         :key="num"
       ) 
         p {{ num }}
-    section.sb
+    section.space-between
       button.btn(@click="prev") Prev
       button.btn(@click="next") Next
 </template>
@@ -41,7 +42,7 @@ export default {
       return new Date(this.currentYear, this.currentMonth, 0).getDate();
     },
     startDay() {
-      // *currentMonth有+1
+      // *currentMonth 有 +1
       return new Date(this.currentYear, this.currentMonth - 1, 1).getDay();
     },
     next() {
@@ -100,10 +101,10 @@ export default {
     section
       display: flex
       flex-direction: row
-      // *在上層容器設定fw: wrap, 其更上層容器需有size限制
+      // *在上層容器設定 fw: wrap, 其更上層容器需有 size 限制
       flex-wrap: wrap
       margin-bottom: 10px
-      &.sb
+      &.space-between
         justify-content: space-between
       .block
         // border: 1px solid #000
@@ -117,7 +118,7 @@ export default {
         &.day
           font-weight: 600
         &.red
-          color: #c43131
+          color: #C43131
           font-weight: 700
       .btn
         padding: 5px 30px

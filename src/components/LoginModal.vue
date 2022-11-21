@@ -17,25 +17,23 @@
     )
     GoogleLogin
     button.login(type="submit") 
-      //- *運用span更換文字
+      //- *運用 span 更換文字
       span(v-if="!isLoading") Login
       span(v-else="isLoading") Loading
 </template>
 
 <script>
-import { auth } from "../utilities/firebase";
+import { auth } from "../plugins/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import GoogleLogin from "./Login/GoogleLogin.vue";
 import store from "../store";
 export default {
-  components: {
-    GoogleLogin: GoogleLogin,
-  },
+  components: { GoogleLogin },
   data() {
     return {
       form: {
         user: "user2@gmail.com",
-        password: "password",
+        password: "123456",
       },
       isLoading: false,
     };

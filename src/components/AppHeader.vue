@@ -8,16 +8,17 @@ nav.app-header
       :to="page.to",
       :key="page.to"
     ) {{ page.title }}
+    //- *v-if="$store.state.isLoggedIn"
     .logout.link.right(v-if="isLoggedIn", @click="logout") logout
     .login.link.right(v-else, @click="openLoginModal") login
 </template>
 
 <script>
-import { auth } from "../utilities/firebase";
+import { auth } from "../plugins/firebase";
 import { signOut } from "firebase/auth";
 import store from "../store";
 export default {
-  // *type: Boolean有default值, 所以不需required
+  // *type: Boolean 有 default 值, 所以不需 required
   // props: { isLoggedIn: { type: Boolean, required: true } },
   data() {
     return {
@@ -37,9 +38,6 @@ export default {
   computed: {
     isLoggedIn() {
       return store.state.isLoggedIn;
-    },
-    isLoginOpen() {
-      return store.state.isLoginOpen;
     },
   },
   methods: {
@@ -70,17 +68,16 @@ export default {
   display: flex
   justify-content: space-between
   .apps
-    // *df可協助對齊
-    display: flex
+    // display: flex
   .link
     margin-left: 20px
-    // *移除a的預設樣式
+    // *移除 a||link 的預設樣式
     text-decoration: none
     color: #eee
     &:hover
       color: #333
     &.right
-      // *2個element可用jc, 2個以上用float
+      // *2個 element 可用 jc, 2個以上用 float
       // float: right
       margin: 0px 10px
       font-size: 14px

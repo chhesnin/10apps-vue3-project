@@ -4,50 +4,72 @@
   section
     article.left
       //- *@input=""+:value=""
-      textarea(:value="text", @input="update", ref="markdownTextArea")
+      //- *@change focus out 才會觸發
+      textarea(:value="text", @input="update", ref="markdownTextareaRef")
     article.right(v-html="getMdText")
 </template>
 
 <script>
+// *Lifecycle Hooks
+// beforeCreate() {
+//   console.log("before create");
+// },
+// created() {
+//   console.log("created");
+// },
+// beforeMount() {
+//   console.log("before mount");
+// },
+// mounted() {
+//   console.log("mounted");
+// },
+// // *當 path 改變, 先 unmount 原先的元件並 mount 新的元件
+// beforeUnmount() {
+//   console.log("before unmount");
+// },
+// unmounted() {
+//   console.log("unmounted");
+// },
+// // *當元件內的資料更新時觸發
+// beforeUpdate() {
+//   console.log("before update");
+// },
+// updated() {
+//   console.log("updated");
+// },
+// *merge 在此定義的同名 data、computed、methods 會覆蓋 mixins 的內容
+
 import { marked } from "marked";
 import useDebounce from "../utilities/composition/useDebounce";
-// import { ref } from "vue";
+// import { ref, onMounted } from "vue";
 export default {
   // ***issue
   // setup() {
+  //   const text = ref("");
   //   const debounce = ref("");
+  //   const markdownTextareaRef = ref("");
 
-  //   const { debounceComposition } = useDebounce();
-  //   debounce.value = debounceComposition;
+  //   onMounted(() => {
+  //     const [debounceComposition] = useDebounce();
+  //     debounce.value = debounceComposition;
+  //     markdownTextareaRef.value.focus();
+  //   });
+
+  //   function update(evt) {
+  //     const task = () => {
+  //       text.value = evt.target.value;
+  //     };
+  //     debounce.value(task, 500);
+  //     console.log("update");
+  //   }
+
+  //   function getMdText() {
+  //     return marked(text.value);
+  //   }
+
+  //   return { text, update, getMdText };
   // },
-  // *Lifecycle Hooks
-  // beforeCreate() {
-  //   console.log("before create");
-  // },
-  // created() {
-  //   console.log("created");
-  // },
-  // beforeMount() {
-  //   console.log("before mount");
-  // },
-  // mounted() {
-  //   console.log("mounted");
-  // },
-  // // *當path改變, 先unmount原先的元件並mount新的元件
-  // beforeUnmount() {
-  //   console.log("before unmount");
-  // },
-  // unmounted() {
-  //   console.log("unmounted");
-  // },
-  // // *當元件內的資料更新時觸發
-  // beforeUpdate() {
-  //   console.log("before update");
-  // },
-  // updated() {
-  //   console.log("updated");
-  // },
-  // *merge 在此定義的同名data、computed、methods會覆蓋mixins的內容
+
   data() {
     return {
       text: "",
@@ -55,11 +77,11 @@ export default {
     };
   },
   mounted() {
-    // *在methods中使用composition
-    // *加{}因為有return{}
-    const { debounce } = useDebounce();
+    // *在 methods 中使用 composition
+    // *加 {} 因為有 return{}
+    const [debounce] = useDebounce();
     this.debounce = debounce;
-    this.$refs.markdownTextArea.focus();
+    this.$refs.markdownTextareaRef.focus();
   },
   computed: {
     getMdText() {
@@ -68,7 +90,9 @@ export default {
   },
   methods: {
     update(evt) {
-      const task = () => (this.text = evt.target.value);
+      const task = () => {
+        this.text = evt.target.value;
+      };
       this.debounce(task, 500);
     },
   },

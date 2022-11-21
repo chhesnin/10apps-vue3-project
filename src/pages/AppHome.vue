@@ -1,6 +1,6 @@
 <template lang='pug'>
 .app-home
-  h1.title Welcome to Vue 3
+  h1.title 10Apps Vue3 Project
 </template>
 
 <script>
@@ -15,10 +15,10 @@ export default {
 
 <style lang='sass'>
 .app-home
-  // *是否以某種方式形成與上層元素區隔的空間, 會影響margin的計算
+  // *是否以某種方式形成與上層元素區隔的 block, 會影響 margin 的計算
   display: flex
   flex-direction: column
-  margin-top: 30px
+  margin-top: 180px
   .title
     text-align: center
     letter-spacing: 1px

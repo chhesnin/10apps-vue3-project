@@ -22,10 +22,10 @@
 <template lang="pug">
 //- *不用縮排
 .app
-  //- *只有$emit的component可以listen
+  //- *只有 $emit 的 component 可以 listen
   AppHeader
   router-view
-  //- *可以teleport元素或元件to any where, 解決在component中的component產生的問題
+  //- *可以 teleport 元素或元件 to any where, 解決在 component 中的 component 產生的問題
   //- teleport(to="body")
   LoginModal(v-if="$store.state.isLoginOpen")
 </template>
@@ -34,12 +34,13 @@
 // *註冊元素
 import AppHeader from "./components/AppHeader.vue";
 import LoginModal from "./components/LoginModal.vue";
-import { auth } from "./utilities/firebase";
+import { auth } from "./plugins/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useStore } from "vuex";
 import { onMounted } from "vue";
 
 export default {
+  components: { AppHeader, LoginModal },
   setup() {
     const store = useStore();
     onMounted(() => {
@@ -54,12 +55,8 @@ export default {
       });
     });
   },
-  components: {
-    AppHeader: AppHeader,
-    LoginModal: LoginModal,
-  },
   // mounted() {
-  //   // *listen auth登入狀態是否改變
+  //   // *listen auth 登入狀態是否改變
   //   onAuthStateChanged(auth, (user) => {
   //     if (user) {
   //       this.$store.commit("setLoggedState", true);
@@ -83,13 +80,9 @@ export default {
 html,body
   height: 100%
   margin: 0
-  // *下層只有一個元素的置中
-  // *display: flex
-  // *justify-content: center
   overflow-x: hidden
 .app
-  *
-    color: #222
+  color: #222
   h1
     font-size: 2em
   h2

@@ -33,7 +33,7 @@ export default {
     // *Array.includes()
     const operations = ["+", "-", "*", "/"];
     // *typeof event.key == "string"
-    // *Array.includes()不允許強制轉型, 改用Array.find()
+    // *Array.includes() 不允許強制轉型, 改用 Array.find()
     const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
     const prevNum = ref("");
     const selectedOperation = ref("");
@@ -41,9 +41,9 @@ export default {
     // *keydown event
     function KeydownFn(evt) {
       pressed(evt.key);
-      console.log(evt.key);
+      // console.log(evt.key);
     }
-    // *在setup()中使用composition
+    // *在 setup(){} 中，直接使用 composition
     useWindowEvent("keydown", KeydownFn);
 
     function pressed(value) {
@@ -61,7 +61,6 @@ export default {
       // *先處理先前的運算
       calculate();
       prevNum.value = currentNum.value;
-      // *只有在value includes operations 才會呼叫此方法
       selectedOperation.value = value;
       currentNum.value = "";
     }
@@ -76,6 +75,7 @@ export default {
     }
     function add() {
       currentNum.value = parseInt(prevNum.value) + parseInt(currentNum.value);
+      // console.log(typeof prevNum.value, typeof currentNum.value);
     }
     function subtract() {
       currentNum.value = prevNum.value - currentNum.value;
@@ -91,7 +91,7 @@ export default {
       currentNum.value = "";
     }
 
-    // *return外面需用的資料就好
+    // *return 外面需用的資料就好
     return {
       currentNum,
       prevNum,
@@ -117,7 +117,6 @@ export default {
     width: calc(200px + 40px)
     flex-wrap: wrap
     justify-content: end
-    // border: 1px solid #000
     &.top
       height: 100px
       overflow: hidden
