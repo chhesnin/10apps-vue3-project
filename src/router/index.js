@@ -73,6 +73,7 @@ router.beforeEach((to, _, next) => {
   if (to.meta.middleware) {
     const middleware = require(`../middleware/${to.meta.middleware}`);
     if (middleware) {
+      // *auth.js 必須 export "default" function
       middleware.default(next, store);
       // console.log(middleware);
     } else {

@@ -88,16 +88,18 @@ export default {
       isPutModalOpen: false,
       updateUserId: "",
       form: {
-        name: "",
-        email: "",
-        avatar: "",
+        name: "Tobias Funke",
+        email: "tobias.funke@reqres.in",
+        avatar: "https://reqres.in/img/faces/9-image.jpg",
       },
     });
+
     onMounted(() => {
       axios.get(`/users`).then((response) => {
         state.users = response.data;
       });
     });
+
     function prevPage() {
       axios.get(`/users?page=1`).then((response) => {
         state.users = response.data;
@@ -112,7 +114,7 @@ export default {
       return user.name.split(" ")[index];
     }
     function destroy(userId) {
-      // *在API上移除
+      // *在 API 上移除
       axios.delete(`/users/${userId}`);
       // *在畫面上移除
       state.users = state.users.filter((user) => user._id !== userId);
@@ -123,8 +125,12 @@ export default {
     }
     function put() {
       // *在API上更新
-      axios.put(`/users/${state.updateUserId}`, state.form);
-      // ***畫面重新渲染？
+      axios.put(`/users/${state.updateUserId}`, state.form).then(() => {
+        // *put 後再次 get，重新渲染畫面
+        axios.get(`/users`).then((response) => {
+          state.users = response.data;
+        });
+      });
       state.updateUserId = "";
       state.isPutModalOpen = false;
       state.form.name = "";
@@ -173,7 +179,7 @@ export default {
       display: flex
       justify-content: end
       margin-bottom: 5px
-      // *components若是一般tag/class/id, CSS可在使用處設定
+      // *component 若是一般 tag/class/id, CSS 可在使用處設定
       button.post
         padding: 5px 30px
     table
@@ -201,8 +207,11 @@ export default {
           justify-content: center
           align-items: center
           padding: 10px
+          font-weight: 500
           &.email
             flex: 3
+          &.img
+            flex: 2
         td
           button.delete,button.put
             padding: 0
@@ -235,7 +244,7 @@ export default {
         &.disabled
           color: #ddd
           border: 1.5px solid #ddd
-          // *取消hover效果
+          // *取消 hover 效果
           pointer-events: none
       button.next
         float: right

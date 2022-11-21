@@ -2,17 +2,17 @@
 .reusable-modal
   h1.title Reusable Modal
 
-  //- *只要是v-if的元素就可以用v-transition, 可包含一個以上的元素
+  //- *只要是 v-if 的元素就可以用 v-transition, v-transition 底下可包含一個以上的元素
   transition(name="fade")
     ReModal(v-if="isModal1Open", @close-modal="isModal1Open = false")
       template(v-slot:title)
-        //- *若slot的外層tag也帶有樣式, 結果受兩者影響
+        //- *若 slot 的外層 tag 也帶有樣式, 結果受兩者影響
         //- *v-slot: === #
         h2.blue Modal 1
-        h5 this is h5 tag.
-        p this is p tag.
+        h5 this is a h5 tag.
+        p this is a p tag.
       template(v-slot:body) 
-        h5 this is h5 tag.
+        h5 this is a h5 tag.
         p use v-slot and template to make components reusable.
   button(@click="isModal1Open = true") Open Modal 1
 

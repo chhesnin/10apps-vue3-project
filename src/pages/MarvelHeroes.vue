@@ -16,11 +16,13 @@
 </template>
 
 <script>
-// setup(){} 不使用this
+// setup(){} 不使用 this
 // setup(){} 與舊架構相容
 // ref() make things reactive *ref().value *use const
-// Lifecycle Hooks 加on, 需import
-// computed 需import
+// ref: 可以接受任何型態的資料，但是不會對物件或陣列內部的屬性變動做監聽。
+// reactive: 只能接受 Object 或 Array，會對內部的屬性變動做深層的監聽，取資料時不需要 .value。
+// Lifecycle Hooks 加 on, 需 import
+// computed 需 import
 
 import { onMounted, ref, computed } from "vue";
 export default {
@@ -34,7 +36,6 @@ export default {
       { name: "Spider-Man" },
       { name: "Doctor Strange" },
     ]);
-    // console.log(heroes);
 
     onMounted(() => {
       newHeroRef.value.focus();
@@ -52,7 +53,7 @@ export default {
       heroes.value = heroes.value.filter((hero, hid) => hid != index);
     }
 
-    // *記得return
+    // *記得 return
     return { heroes, newHero, removeHero, addHero, newHeroRef, heroesCount };
   },
 };
@@ -77,7 +78,7 @@ export default {
       border-radius: 5px
       padding: 10px
       margin: 10px 0px
-      // *運用df與jc:space-between將容器內的元素左右擺
+      // *運用 df 與 jc:space-between 將容器內的元素左右擺
       display: flex
       justify-content: space-between
       transition: 0.5s
@@ -85,7 +86,7 @@ export default {
         background-color: #eee
         transform: translateY(-3px)
       .remove
-        // *float在上層容器的左右邊
+        // *float 在上層容器的左右邊
         // float: right
         padding: 0
         width: 20px

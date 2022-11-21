@@ -1,9 +1,9 @@
 <template lang="pug">
-//- *ReModal被teleport走了，故此components只剩button.post
+//- *ReModal 被 teleport 走了，故此 component 只剩 button.post
 button.post(@click="state.isPostModalOpen = true") Post
 //- *Post Modal
 teleport(to="#app")
-  //- *components若有template架構, CSS在components file設定
+  //- *component 若有 template 架構, CSS 在 component file 設定
   ReModal(
     v-if="state.isPostModalOpen",
     @close-modal="state.isPostModalOpen = false"
@@ -36,14 +36,14 @@ import axios from "@/plugins/axios";
 export default {
   components: { ReModal },
   setup(_, { emit }) {
-    // *ref與reactive可以共用
+    // *ref 與 reactive 可以共用
     // const isPostModalOpen = ref(false);
     const state = reactive({
       isPostModalOpen: false,
       form: {
-        name: "",
-        email: "",
-        avatar: "",
+        name: "Michael Lawson",
+        email: "michael.lawson@reqres.in",
+        avatar: "https://reqres.in/img/faces/7-image.jpg",
       },
     });
 
