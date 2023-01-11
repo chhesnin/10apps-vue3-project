@@ -33,7 +33,7 @@ export default {
     return {
       form: {
         user: "user2@gmail.com",
-        password: "123456",
+        password: "222222",
       },
       isLoading: false,
     };

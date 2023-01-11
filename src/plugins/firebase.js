@@ -7,13 +7,13 @@ import { getDatabase, ref } from "firebase/database";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB7TAfFOBQlazdd0nubfWDNawz68bO283k",
-  authDomain: "vue3-10apps-project.firebaseapp.com",
-  databaseURL: "https://vue3-10apps-project-default-rtdb.firebaseio.com",
-  projectId: "vue3-10apps-project",
-  storageBucket: "vue3-10apps-project.appspot.com",
-  messagingSenderId: "502391045005",
-  appId: "1:502391045005:web:ce81090ab40f245b94dbc4",
+  apiKey: "AIzaSyAPfp6N1a14AFkG5W64UKNoL7r1ein1jWs",
+  authDomain: "vue3-apps-project.firebaseapp.com",
+  databaseURL: "https://vue3-apps-project-default-rtdb.firebaseio.com",
+  projectId: "vue3-apps-project",
+  storageBucket: "vue3-apps-project.appspot.com",
+  messagingSenderId: "1044945584328",
+  appId: "1:1044945584328:web:28423a859d3eeeb7c0a5fd",
 };
 
 // Initialize Firebase
