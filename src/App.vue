@@ -1,4 +1,4 @@
-// {{ Vue & JavaScrip }} // v-html具危險性 *XSS prone 
+// {{ Vue & JavaScript }} // v-html具危險性 *XSS prone 
 // v-if中亦可直接使用boolean或運算式 
 // v-if remove / v-show hidden 
 // v-text == {{..}} *但v-text無法在前後加文字 
@@ -80,7 +80,7 @@ export default {
 html,body
   height: 100%
   margin: 0
-  overflow-x: hidden
+  // overflow-x: hidden
 .app
   color: #222
   h1

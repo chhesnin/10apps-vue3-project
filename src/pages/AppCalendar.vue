@@ -95,7 +95,7 @@ export default {
   .calendar
     display: flex
     flex-direction: column
-    width: 420px
+    width: 350px
     *
       box-sizing: border-box
     section
@@ -108,11 +108,11 @@ export default {
         justify-content: space-between
       .block
         // border: 1px solid #000
-        +size(60px,40px)
+        +size(50px,40px)
         +flex
         font-weight: 100
         &.month,&.year
-          +size(60px,30px)
+          +size(50px,30px)
           color: rgba(#177089,0.8)
           font-weight: 700
         &.day
