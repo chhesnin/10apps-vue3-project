@@ -124,7 +124,7 @@ export default {
       state.updateUserId = userId;
     }
     function put() {
-      // *在API上更新
+      // *在 API 上更新
       axios.put(`/users/${state.updateUserId}`, state.form).then(() => {
         // *put 後再次 get，重新渲染畫面
         axios.get(`/users`).then((response) => {

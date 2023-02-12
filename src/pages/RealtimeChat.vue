@@ -19,7 +19,7 @@
 
 <script>
 // *名稱重複可用 ref as databaseRef 更換名稱
-// *使用 reactive 代替
+// *ref / reactive
 // *only one data use ref, { more than one data } use reactive
 import { onMounted, reactive } from "vue";
 import { set, push, onChildAdded } from "firebase/database";

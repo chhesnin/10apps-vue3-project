@@ -89,6 +89,8 @@ export default {
 
     function clear() {
       currentNum.value = "";
+      prevNum.value = "";
+      selectedOperation.value = "";
     }
 
     // *return 外面需用的資料就好

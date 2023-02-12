@@ -1,6 +1,6 @@
 <template lang='pug'>
 .app-home
-  h1.title Vue3 Project
+  h1.title Vue3 Apps Project
 </template>
 
 <script>
