@@ -85,7 +85,11 @@ export default {
   align-items: center
   background: linear-gradient(0deg, #aaa 0%, #fff 100%)
   width: 100vw
-  height: 100vh
+  // height: 100vh
+  box-sizing: border-box
+  padding-bottom: 100px
+  @media screen and (max-width: 576px)
+    padding: 0px 45px 60px 45px
   .title
     margin:
       top: 52px
@@ -95,6 +99,8 @@ export default {
     height: 400px
     *
       box-sizing: border-box
+    @media screen and (max-width: 576px)
+      width: 100%
     .body
       border: 2px solid #aaa
       border-radius: 5px

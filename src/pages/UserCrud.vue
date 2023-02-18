@@ -6,7 +6,7 @@
       PostUser(@new-user-pushed="newUserPushed")
     table
       thead
-        tr.head(style="color: #fff")
+        tr.head(style="color: #fff", v-if="!state.isShorterThan880")
           th Id
           th Put
           th Delete
@@ -14,11 +14,17 @@
           th Last_name
           th.email Email
           th.img Avatar
+        tr.head(style="color: #fff", v-else)
+          th Put
+          th Delete
+          th name
+          th.img Avatar
       tbody
         tr.body(
           v-for="(user, index) in state.users",
           :key="user._id",
-          :class="{ deep: index % 2 == 1 }"
+          :class="{ deep: index % 2 == 1 }",
+          v-if="!state.isShorterThan880"
         )
           td {{ index + 1 }}
           td
@@ -29,15 +35,23 @@
           td {{ getName(user, 1) }}
           td.email {{ user.email }}
           td.img(:style="{ backgroundImage: `url(${user.avatar})` }")
+        tr.body(
+          v-for="(user, index) in state.users",
+          :key="user._id",
+          :class="{ deep: index % 2 == 1 }",
+          v-else
+        )
+          td
+            button.put(@click="getPutModalOpen(user._id)") v
+          td
+            button.delete(@click="destroy(user._id)") x
+          td {{ user.name }}
+          td.img(:style="{ backgroundImage: `url(${user.avatar})` }")
     .btns
-      button(
-        :disabled="state.users.page == 1",
-        :class="{ disabled: state.users.page == 1 }",
-        @click="prevPage"
-      ) Prev
+      button(:disabled="true", :class="{ disabled: true }", @click="prevPage") Prev
       button.next(
-        :disabled="state.users.page == state.users.total_pages",
-        :class="{ disabled: state.users.page == state.users.total_pages }",
+        :disabled="true",
+        :class="{ disabled: true }",
         @click="nextPage"
       ) Next
 
@@ -80,6 +94,7 @@ import axios from "../plugins/axios";
 // *需要.vue
 import ReModal from "../components/ReModal.vue";
 import PostUser from "../components/UserCrud/PostUser.vue";
+import useWindowEvent from "../utilities/composition/useWindowEvent";
 export default {
   components: { ReModal, PostUser },
   setup() {
@@ -92,14 +107,22 @@ export default {
         email: "tobias.funke@reqres.in",
         avatar: "https://reqres.in/img/faces/9-image.jpg",
       },
+      isShorterThan880: false,
     });
-
     onMounted(() => {
       axios.get(`/users`).then((response) => {
         state.users = response.data;
       });
     });
-
+    function handleResize() {
+      if (window.innerWidth < 880) {
+        state.isShorterThan880 = true;
+      } else {
+        state.isShorterThan880 = false;
+      }
+    }
+    useWindowEvent("resize", handleResize);
+    handleResize();
     function prevPage() {
       axios.get(`/users?page=1`).then((response) => {
         state.users = response.data;
@@ -162,19 +185,23 @@ export default {
 .user-crud
   display: flex
   flex-direction: column
-  // align-items: center
+  align-items: center
   margin-top: 30px
   .title
     letter-spacing: 1px
     text-align: center
   section
-    margin: 0px 60px 60px 60px
+    padding: 0px 60px 60px 60px
+    box-sizing: border-box
     display: flex
     flex-direction: column
-    width: 800px
+    max-width: 800px
+    width: 100%
+    @media screen and (max-width: 576px)
+      padding: 0px 45px 60px 45px
     // *
-    margin-left: auto
-    margin-right: auto
+      margin-left: auto
+      margin-right: auto
     .post
       display: flex
       justify-content: end

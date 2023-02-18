@@ -109,7 +109,7 @@ export default {
   flex-direction: column
   margin-top: 30px
   // ***100vh 100%視窗高度
-  height: calc(100vh - 110px)
+  // height: calc(100vh - 150px)
   *
     box-sizing: border-box
   .title
@@ -118,13 +118,14 @@ export default {
   section
     // border: 1px solid #000
     display: flex
-    height: 100%
-    margin: 0px 40px 40px 40px
+    height: 460px
+    margin: 0px 150px
+    @media screen and (max-width: 880px)
+      flex-direction: column
+      margin: 0px 30px 45px 30px
     article
       flex: 1
-      margin:
-        left: 10px
-        right: 10px
+      margin: 15px
       &.right
         border: 2px solid #ddd
         border-radius: 5px

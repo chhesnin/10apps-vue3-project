@@ -1,6 +1,6 @@
 <template lang="pug">
 .object-detection
-  h1.title Tensorflow Object Detection
+  h1.title Object Detection
   h5 *Try With Cell Phone Only
   //- *(ref="")
   //- *v-show 讓元素保持存在才不會抓不到
@@ -118,10 +118,13 @@ export default {
     text-align: center
     letter-spacing: 1px
     margin-bottom: 30px
+    @media screen and (max-width: 576px)
+      margin-bottom: 20px
   h5
     font-weight: 300
     color: #c43131
     letter-spacing: 1px
+    margin-bottom: 10px
   video
     border: 2px solid #ddd
     width: 300px

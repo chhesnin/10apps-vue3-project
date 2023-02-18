@@ -5,7 +5,7 @@
     transition(name="slide")
       .inner(
         v-if="currentSlider == index",
-        :style="{ backgroundColor: slider, width: '100%', height: '400px' }"
+        :style="{ backgroundColor: slider, width: '100%', height: '100%' }"
       )
   section
     article
@@ -63,7 +63,7 @@ export default {
 
 <style lang='sass'>
 =imgCss
-  height: 400px
+  height: 350px
   width: 100%
   position: absolute
 
@@ -71,10 +71,12 @@ export default {
   display: flex
   flex-direction: column
   position: relative
+  overflow: hidden
   .img
     +imgCss
+    position: absolute
   section
-    margin-top: 360px
+    margin-top: 300px
     display: flex
     flex-direction: column
     align-items: center
@@ -97,17 +99,17 @@ export default {
           background-color: #c43131
     button
       padding: 5px 10px
-.fade-enter-active,.fade-leave-active
-  // *
-  transition: opacity 0.5s ease
-// .fade-enter-from,.fade-leave-to
-//   opacity: 0
-.slide-enter-active,.slide-leave-active
-  transition: 2s ease
-.slide-enter-from
-  opacity: 1
-  transform: translateX(100%)
-.slide-leave-to
-  opacity: 0
-  transform: translateX(0%)
+  .fade-enter-active,.fade-leave-active
+    // *
+    transition: opacity 0.5s ease
+  // .fade-enter-from,.fade-leave-to
+  //   opacity: 0
+  .slide-enter-active,.slide-leave-active
+    transition: 2s ease
+  .slide-enter-from
+    opacity: 1
+    transform: translateX(100%)
+  .slide-leave-to
+    opacity: 0
+    transform: translateX(0%)
 </style>

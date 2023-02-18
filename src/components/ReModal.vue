@@ -31,6 +31,7 @@ export default {
   height: $h
 
 .re-modal
+  z-index: 1
   section
     position: fixed
     +size(100vw,100vh)

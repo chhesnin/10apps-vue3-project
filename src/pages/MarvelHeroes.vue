@@ -65,6 +65,9 @@ export default {
   flex-direction: column
   align-items: center
   margin-top: 30px
+  padding-bottom: 60px
+  @media screen and (max-width: 576px)
+    padding: 0px 45px 60px 45px
   .title
     letter-spacing: 1px
   h4
@@ -73,6 +76,8 @@ export default {
     list-style: none
     padding-left: 0
     width: 300px
+    @media screen and (max-width: 576px)
+      width: 100%
     li
       border: 1px solid #aaa
       border-radius: 5px
@@ -104,4 +109,8 @@ export default {
     width: 300px
     display: flex
     justify-content: space-between
+    @media screen and (max-width: 576px)
+      width: 100%
+      button
+        font-size: 13px
 </style>

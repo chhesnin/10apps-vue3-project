@@ -96,6 +96,8 @@ export default {
     display: flex
     flex-direction: column
     width: 350px
+    @media screen and (max-width: 880px)
+      width: 280px
     *
       box-sizing: border-box
     section
@@ -109,12 +111,16 @@ export default {
       .block
         // border: 1px solid #000
         +size(50px,40px)
+        @media screen and (max-width: 880px)
+          +size(40px,40px)
         +flex
         font-weight: 100
         &.month,&.year
           +size(50px,30px)
           color: rgba(#177089,0.8)
           font-weight: 700
+          @media screen and (max-width: 880px)
+            +size(40px,30px)
         &.day
           font-weight: 600
         &.red

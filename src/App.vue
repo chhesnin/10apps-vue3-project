@@ -78,13 +78,16 @@ export default {
   font-family: 'Roboto', sans-serif
 
 html,body
-  height: 100%
+  width: 100vw
+  height: 100vh
   margin: 0
-  // overflow-x: hidden
+  overflow-x: hidden
 .app
   color: #222
   h1
-    font-size: 2em
+    font-size: 1.7em
+    @media screen and (max-width: 576px)
+      font-size: 1.4em
   h2
     text-align: center
   button
@@ -93,6 +96,10 @@ html,body
     border: 1.5px solid #aaa
     border-radius: 5px
     transition: 0.1s
+    color: #222
+    background-color: #eee
+    font-size: 13.5px
+    font-weight: 400
     &:hover
       background-color: rgba(#177089,0.8)
       color: #eee
