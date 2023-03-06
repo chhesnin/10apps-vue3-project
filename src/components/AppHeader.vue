@@ -151,12 +151,12 @@ export default {
   box-sizing: border-box
   background: linear-gradient(180deg, rgba(#177089,0.7) 0% 60%, transparent 100%)
   color: #eee
-  display: flex
   .container.wide
     width: 100%
     display: flex
     align-items: center
     padding: 0px 10px
+    box-sizing: border-box
     .home
       flex: 1
     .right

@@ -61,7 +61,7 @@
       v-if="state.isPutModalOpen",
       @close-modal="state.isPutModalOpen = false"
     )
-      template(#title) 
+      template(#title)
         h2 Update User
       template(#body)
         form(@submit.prevent="put")
@@ -103,9 +103,9 @@ export default {
       isPutModalOpen: false,
       updateUserId: "",
       form: {
-        name: "Tobias Funke",
-        email: "tobias.funke@reqres.in",
-        avatar: "https://reqres.in/img/faces/9-image.jpg",
+        name: "George Bluth",
+        email: "george.bluth@reqres.in",
+        avatar: "https://reqres.in/img/faces/1-image.jpg",
       },
       isShorterThan880: false,
     });
@@ -197,11 +197,13 @@ export default {
     flex-direction: column
     max-width: 800px
     width: 100%
+    margin-left: auto
+    margin-right: auto
+    @media screen and (max-width: 880px)
+      width: 80%
     @media screen and (max-width: 576px)
+      width: 100%
       padding: 0px 45px 60px 45px
-    // *
-      margin-left: auto
-      margin-right: auto
     .post
       display: flex
       justify-content: end

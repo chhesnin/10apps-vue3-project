@@ -17,6 +17,9 @@
     )
     GoogleLogin
     button.login(type="submit") 
+      |
+      |
+      |
       //- *運用 span 更換文字
       span(v-if="!isLoading") Login
       span(v-else="isLoading") Loading
@@ -106,6 +109,6 @@ export default {
       padding: 5px 10px
     button.login
       width: 100%
-      margin: 15px 0px
+      margin: 14px 0px 20px 0px
       padding: 6px
 </style>

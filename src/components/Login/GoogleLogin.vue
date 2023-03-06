@@ -1,6 +1,7 @@
 <template lang="pug">
 .google-login
-  h4(@click="loginWithGoogle") Login With Google
+  //- *在 form 中的 button default type="submit"
+  button.google(type="button", @click="loginWithGoogle") Login With Google
 </template>
 
 <script>
@@ -24,10 +25,9 @@ export default {
 
 <style lang="sass">
 .google-login
-  h4
-    margin: 0
-    text-align: center
-    font-weight: 300
-    letter-spacing: 1px
+  button.google
+    width: 100%
+    margin: 5px 0px 0px 0px
+    padding: 6px
     cursor: pointer
 </style>

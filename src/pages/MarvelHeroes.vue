@@ -3,7 +3,7 @@
   h1.title MARVEL Heroes
   h4 {{ heroesCount }}
   ul
-    li(v-for="(hero, index) in heroes", v-bind:key="hero.name") 
+    li(v-for="(hero, index) in heroes", v-bind:key="hero.name")
       span {{ hero.name }}
       button.remove(@click="removeHero(index)") x
   form(@submit.prevent="addHero")
