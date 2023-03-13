@@ -16,10 +16,7 @@
       placeholder="enter your password"
     )
     GoogleLogin
-    button.login(type="submit") 
-      |
-      |
-      |
+    button.login(type="submit")
       //- *運用 span 更換文字
       span(v-if="!isLoading") Login
       span(v-else="isLoading") Loading
