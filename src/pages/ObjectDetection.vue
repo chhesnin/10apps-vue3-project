@@ -63,7 +63,7 @@ export default {
         const camId = cams[0].deviceId;
         isStreaming.value = true;
         navigator.mediaDevices
-          // *OverconstrainedError:當使用min或者exact關鍵詞請求一個比較高的幀速率或者高的分辨率的時候就會出現此錯誤。
+          // *OverconstrainedError:當使用 min 或者 exact 關鍵詞請求一個比較高的幀速率或者高的分辨率的時候就會出現此錯誤。
           // *.getUserMedia({ video: { deviceId: { exact: camId } } })
           .getUserMedia({ video: { deviceId: camId } })
           .then((stream) => {

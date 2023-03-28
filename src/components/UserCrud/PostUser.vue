@@ -9,6 +9,14 @@ teleport(to="#app")
     @close-modal="state.isPostModalOpen = false"
   )
     template(#title) 
+      |
+      |
+      |
+      |
+      |
+      |
+      |
+      |
       h2 Add New User
     template(#body)
       form(@submit.prevent="post")
@@ -35,6 +43,8 @@ import { reactive } from "vue";
 import axios from "@/plugins/axios";
 export default {
   components: { ReModal },
+  // ***
+  emits: ["new-user-pushed"],
   setup(_, { emit }) {
     // *ref 與 reactive 可以共用
     // const isPostModalOpen = ref(false);
